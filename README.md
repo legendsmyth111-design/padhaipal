@@ -1,7 +1,6 @@
 
 # 📘 PadhaiPal — Your Free AI Study Companion
 
-> **⚠️ Note:** Replace the live URL below with your deployed link and update screenshot paths before submission.
 
 ## a. What it does & the problem it solves
 
