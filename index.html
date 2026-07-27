@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PadhaiPal — Your Free AI Study Companion</title>
+<meta name="description" content="PadhaiPal is a free, no-login AI study companion for Pakistani college students: ask questions in English or Urdu, generate quizzes, and track your study time.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="brand"><span class="dot"></span>PadhaiPal</a>
+    <button class="navtoggle" id="navToggle" aria-label="Menu">☰</button>
+    <ul class="navlinks" id="navLinks">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="assistant.html">AI Study Buddy</a></li>
+      <li><a href="quiz.html">Quiz Generator</a></li>
+      <li><a href="tracker.html">Study Tracker</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Free · No login · Built for Pakistani students</span>
+      <h1>Ustaad nahi mila? <br>Koi baat nahi — PadhaiPal hai.</h1>
+      <p class="muted" style="font-size:1.08rem;max-width:520px;">
+        Har college mein achay tutors nahi hotay, aur private tuition sab afford nahi kar saktay.
+        PadhaiPal ek free AI study companion hai — apna concept poochho, quiz banwao, aur apna
+        study time track karo. Sirf internet chahiye, login nahi.
+      </p>
+      <div class="hero-cta">
+        <a href="assistant.html" class="btn btn-primary">Ask a question →</a>
+        <a href="quiz.html" class="btn btn-outline">Try the quiz generator</a>
+      </div>
+    </div>
+    <div class="notebook">
+      <p class="mono" style="font-size:.78rem;color:var(--chalk-green);margin-bottom:6px;">STUDENT · Government Postgraduate College</p>
+      <p style="margin-bottom:4px;"><strong>Q:</strong> Newton ka teesra law simple lafzon mein samjhao?</p>
+      <p class="muted" style="margin-bottom:14px;">
+        <strong>PadhaiPal:</strong> Jab bhi ek cheez doosri cheez par force lagati hai, doosri cheez
+        bhi usi taqat se ulta force lagati hai — barabar aur mukhalif. Jaise jab tum zameen par
+        chalte ho, tumhare paon zameen ko peechay dhakkelte hain, aur zameen tumhein aagay dhakkelti hai...
+      </p>
+      <span class="badge">AI-generated example</span>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">What's inside</span>
+      <h2>Ek app, teen tools</h2>
+      <p class="muted">Sab kuch browser mein chalta hai — koi account banane ki zaroorat nahi.</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="card">
+        <div class="icon">💬</div>
+        <h3>AI Study Buddy</h3>
+        <p>Kisi bhi subject ka concept poochho — Physics ho ya Pak Studies — aur seedhe, simple Roman Urdu ya English mein jawab lo, step by step.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📝</div>
+        <h3>AI Quiz Generator</h3>
+        <p>Apna topic likho, AI turant ek MCQ quiz bana deta hai. Attempt karo aur foran apna score aur sahi jawab dekho.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📊</div>
+        <h3>Study Tracker</h3>
+        <p>Apne roz ke study sessions log karo, subject-wise time dekho, aur apni streak build karo — sab kuch tumhare apne browser mein save hota hai.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--white);border-top:1px solid var(--paper-dim);border-bottom:1px solid var(--paper-dim);">
+  <div class="wrap two-col">
+    <div>
+      <span class="eyebrow">The problem</span>
+      <h2>Real gap jo yeh app solve karti hai</h2>
+      <p class="muted">
+        Chhote shehron aur dor-daraz colleges ke students ke paas aksar affordable tuition ya
+        24/7 academic help ka access nahi hota. Books hain, lecture notes hain — lekin jab raat
+        ko 11 baje koi concept samajh na aaye, poochne wala koi nahi hota.
+      </p>
+    </div>
+    <div>
+      <span class="eyebrow">The fix</span>
+      <h2>Har waqt available, bilingual madad</h2>
+      <p class="muted">
+        PadhaiPal ek AI companion hai jo kabhi thakta nahi, dobara-dobara ek hi sawal se irritate
+        nahi hota, aur student ki apni zaban (Roman Urdu/English mix) mein baat karta hai — bilkul
+        waise jaise ek senior classmate samjhata ho.
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 PadhaiPal — built as a college final project.</div>
+    <div class="foot-small">Made with an AI-powered study feature · <a href="about.html">How it works</a></div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('navToggle').addEventListener('click',()=>{
+  document.getElementById('navLinks').classList.toggle('open');
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Study Buddy — PadhaiPal</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="brand"><span class="dot"></span>PadhaiPal</a>
+    <button class="navtoggle" id="navToggle" aria-label="Menu">☰</button>
+    <ul class="navlinks" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="assistant.html" class="active">AI Study Buddy</a></li>
+      <li><a href="quiz.html">Quiz Generator</a></li>
+      <li><a href="tracker.html">Study Tracker</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section style="padding-top:36px;">
+  <div class="wrap">
+    <span class="eyebrow">AI feature #1</span>
+    <h1 style="font-size:2rem;">AI Study Buddy</h1>
+    <p class="muted" style="max-width:600px;">
+      Koi bhi concept, subject, ya assignment ka sawal poochho. Jawab step-by-step aur simple
+      lafzon mein milega — Roman Urdu ya English, jo bhi tum use karo.
+    </p>
+
+    <div class="chat-shell" style="margin-top:20px;">
+      <div class="chat-log" id="chatLog">
+        <div class="msg bot">Assalam-o-Alaikum! 👋 Main tumhara PadhaiPal Study Buddy hoon. Koi bhi topic poochho — Physics, Math, English grammar, Pak Studies, kuch bhi. Kis subject se shuru karein?</div>
+      </div>
+      <div class="chat-input">
+        <textarea id="chatInput" placeholder="Apna sawal yahan likho... (e.g. Osmosis kya hota hai?)" rows="1"></textarea>
+        <button class="btn btn-primary" id="sendBtn">Send</button>
+      </div>
+    </div>
+
+    <div class="chips">
+      <button class="chip" data-q="Newton ke teen laws simple example ke saath samjhao">Newton's laws</button>
+      <button class="chip" data-q="Essay likhne ka structure kya hota hai?">Essay structure</button>
+      <button class="chip" data-q="Photosynthesis kaise kaam karta hai?">Photosynthesis</button>
+      <button class="chip" data-q="Mera CV kaise banau, ek fresh graduate ke liye?">CV tips</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 PadhaiPal</div>
+    <div class="foot-small"><a href="about.html">See the system prompt behind this feature →</a></div>
+  </div>
+</footer>
+
+<script src="js/assistant.js"></script>
+<script>
+document.getElementById('navToggle').addEventListener('click',()=>{
+  document.getElementById('navLinks').classList.toggle('open');
+});
+</script>
+</body>
+</html>

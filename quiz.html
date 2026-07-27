@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Quiz Generator — PadhaiPal</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="brand"><span class="dot"></span>PadhaiPal</a>
+    <button class="navtoggle" id="navToggle" aria-label="Menu">☰</button>
+    <ul class="navlinks" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="assistant.html">AI Study Buddy</a></li>
+      <li><a href="quiz.html" class="active">Quiz Generator</a></li>
+      <li><a href="tracker.html">Study Tracker</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section style="padding-top:36px;">
+  <div class="wrap">
+    <span class="eyebrow">AI feature #2</span>
+    <h1 style="font-size:2rem;">AI Quiz Generator</h1>
+    <p class="muted" style="max-width:600px;">
+      Koi bhi topic likho, difficulty aur sawalon ki tadaad choose karo — AI turant ek MCQ quiz
+      bana dega. Attempt karke apna score check karo.
+    </p>
+
+    <div class="card" style="margin-top:20px;">
+      <div class="quiz-setup">
+        <div class="field">
+          <label for="topic">Topic</label>
+          <input type="text" id="topic" placeholder="e.g. Cell Biology, Pakistan Movement, Algebra">
+        </div>
+        <div class="field" style="max-width:160px;">
+          <label for="difficulty">Difficulty</label>
+          <select id="difficulty">
+            <option>Easy</option>
+            <option selected>Medium</option>
+            <option>Hard</option>
+          </select>
+        </div>
+        <div class="field" style="max-width:140px;">
+          <label for="count">Questions</label>
+          <select id="count">
+            <option>3</option>
+            <option selected>5</option>
+            <option>8</option>
+            <option>10</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" id="genBtn" style="height:44px;">Generate quiz</button>
+      </div>
+      <p id="genStatus" class="muted" style="margin-top:12px;font-size:.88rem;"></p>
+    </div>
+
+    <div id="quizArea" style="margin-top:26px;"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 PadhaiPal</div>
+    <div class="foot-small"><a href="about.html">See the system prompt behind this feature →</a></div>
+  </div>
+</footer>
+
+<script src="js/quiz.js"></script>
+<script>
+document.getElementById('navToggle').addEventListener('click',()=>{
+  document.getElementById('navLinks').classList.toggle('open');
+});
+</script>
+</body>
+</html>
