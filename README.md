@@ -92,10 +92,23 @@ Keep language clear and exam-relevant to a Pakistani college curriculum where ap
 - **Fonts:** Google Fonts (Fraunces, Work Sans, IBM Plex Mono)
 
 ## f. Screenshots
+<img width="942" height="438" alt="assistant" src="https://github.com/user-attachments/assets/5bbc70ff-712c-492d-8d83-51b3a702a584" />
 
 ![Home Page](screenshots/home.png)
+
+
+<img width="943" height="436" alt="home" src="https://github.com/user-attachments/assets/97ba40fc-ecb6-4e7f-b163-b11a92faad1c" />
+
 ![AI Study Buddy](screenshots/assistant.png)
+
+
+<img width="945" height="446" alt="quiz" src="https://github.com/user-attachments/assets/a8152644-7cce-4fc4-9c3d-13f949a4101c" />
+
 ![Quiz Generator](screenshots/quiz.png)
+
+
+![Uploading tracker.png…]()
+
 ![Study Tracker](screenshots/tracker.png)
 
 ## g. How to run the project
