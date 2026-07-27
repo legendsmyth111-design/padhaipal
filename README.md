@@ -93,10 +93,13 @@ Keep language clear and exam-relevant to a Pakistani college curriculum where ap
 
 ## f. Screenshots
 
-![Home Page](screenshots/home.png)
-![AI Study Buddy](screenshots/assistant.png)
-![Quiz Generator](screenshots/quiz.png)
-![Study Tracker](screenshots/tracker.png)
+![Home Page](./screenshorts/home.png)
+
+![AI Study Buddy](./screenshorts/assistant.png)
+
+![Quiz Generator](./screenshorts/quiz.png)
+
+![Study Tracker](./screenshorts/tracker.png)
 
 ## g. How to run the project
 
