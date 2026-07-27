@@ -94,9 +94,17 @@ Keep language clear and exam-relevant to a Pakistani college curriculum where ap
 ## f. Screenshots
 
 ![Home Page](screenshots/home.png)
+<img width="943" height="436" alt="home" src="https://github.com/user-attachments/assets/09d3c3d2-8873-4f11-8b04-3566daa7536c" />
+
 ![AI Study Buddy](screenshots/assistant.png)
+<img width="942" height="438" alt="assistant" src="https://github.com/user-attachments/assets/d4c31f02-3316-413b-90c8-6cd57414b212" />
+
 ![Quiz Generator](screenshots/quiz.png)
+<img width="945" height="446" alt="quiz" src="https://github.com/user-attachments/assets/2a07555b-6eb4-44aa-9c6b-9873ba660d8b" />
+
 ![Study Tracker](screenshots/tracker.png)
+<img width="946" height="442" alt="tracker" src="https://github.com/user-attachments/assets/f9cfd3fc-78fc-4ab1-adbc-5a61b8bb1e1f" />
+
 
 ## g. How to run the project
 
