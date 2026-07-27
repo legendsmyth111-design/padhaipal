@@ -1,5 +1,5 @@
 // /api/quiz — AI Quiz Generator backend
-// Runs as a Vercel Serverless Function. Keeps the Anthropic API key on the
+// Runs as a Vercel Serverless Function. Keeps the Gemini API key on the
 // server only — it is never exposed to the browser.
 
 const SYSTEM_PROMPT = `You are PadhaiPal's quiz generator. Given a topic, a difficulty level, and a number of
@@ -16,7 +16,7 @@ Rules:
 - Write a short one-line explanation for why the correct answer is correct.
 - Keep language clear and exam-relevant to a Pakistani college curriculum where applicable.`;
 
-const MODEL = process.env.AI_MODEL || 'claude-haiku-4-5-20251001';
+const MODEL = process.env.AI_MODEL || 'gemini-2.5-flash';
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {
@@ -24,9 +24,9 @@ module.exports = async (req, res) => {
     return;
   }
 
-  const apiKey = process.env.ANTHROPIC_API_KEY;
+  const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
-    res.status(500).json({ error: 'Server is missing ANTHROPIC_API_KEY. Set it in your hosting environment variables.' });
+    res.status(500).json({ error: 'Server is missing GEMINI_API_KEY. Set it in your hosting environment variables.' });
     return;
   }
 
@@ -41,18 +41,18 @@ module.exports = async (req, res) => {
 
     const userPrompt = `Topic: ${topic}\nDifficulty: ${safeDifficulty}\nNumber of questions: ${safeCount}`;
 
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`;
+
+    const response = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01'
+        'x-goog-api-key': apiKey
       },
       body: JSON.stringify({
-        model: MODEL,
-        max_tokens: 2000,
-        system: SYSTEM_PROMPT,
-        messages: [{ role: 'user', content: userPrompt }]
+        system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
+        contents: [{ role: 'user', parts: [{ text: userPrompt }] }],
+        generationConfig: { maxOutputTokens: 2000, responseMimeType: 'application/json' }
       })
     });
 
@@ -63,9 +63,8 @@ module.exports = async (req, res) => {
       return;
     }
 
-    const raw = (data.content || [])
-      .filter(block => block.type === 'text')
-      .map(block => block.text)
+    const raw = (data.candidates?.[0]?.content?.parts || [])
+      .map(p => p.text || '')
       .join('\n')
       .trim();
 

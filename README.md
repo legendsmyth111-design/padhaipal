@@ -37,12 +37,13 @@ access to a tutor, especially outside major cities.
 | Study Tracker | Log study sessions (subject, minutes, date) → see total hours, sessions logged, day streak, and subjects covered → remove sessions → all stored locally in the browser, no server, no login |
 | About | Explains the problem, the exact AI system prompts used, the feature list, and the tools/tech stack |
 
-Other things every page has: responsive mobile layout, no login anywhere in the app, and a
-consistent notebook-inspired design.
+Other things every page has: responsive mobile layout, no login anywhere in the app, an EN /
+Roman-Urdu language toggle in the navbar (saved per browser), and a consistent notebook-inspired
+design.
 
 ## d. The AI feature
 
-PadhaiPal has **two** AI-powered features, both backed by the **Anthropic Claude API**, called
+PadhaiPal has **two** AI-powered features, both backed by the **Google Gemini API**, called
 from serverless backend functions (`/api/chat.js` and `/api/quiz.js`) so the API key is never
 exposed in the browser.
 
@@ -94,13 +95,13 @@ Rules:
 
 - **Frontend:** Vanilla HTML5, CSS3, JavaScript (no framework, no build step)
 - **Backend:** Vercel Serverless Functions (Node.js)
-- **AI model/provider:** Anthropic Claude API (`claude-haiku-4-5-20251001` by default — configurable
+- **AI model/provider:** Google Gemini API (`gemini-2.5-flash` by default — configurable
   via the `AI_MODEL` environment variable)
 - **Storage:** Browser `localStorage` for the Study Tracker (no database needed)
 - **Hosting/Deployment:** Vercel
 - **Version control:** Git & GitHub
 - **Fonts:** Google Fonts (Fraunces, Work Sans, IBM Plex Mono)
-- **Built with help from:** Claude (Anthropic) as an AI coding assistant
+- **Built with help from:** Claude (Anthropic) as an AI coding assistant during development
 
 ## f. Screenshots
 
@@ -123,7 +124,7 @@ Rules:
    git clone https://github.com/<your-username>/padhaipal.git
    cd padhaipal
    ```
-3. Copy `.env.example` to `.env` and add your own Anthropic API key:
+3. Copy `.env.example` to `.env` and add your own Gemini API key:
    ```
    cp .env.example .env
    ```
@@ -154,8 +155,8 @@ padhaipal/
 │   ├── quiz.js            # Quiz frontend logic
 │   └── tracker.js         # Tracker frontend logic (localStorage)
 ├── api/
-│   ├── chat.js            # Serverless function → Anthropic API (Study Buddy)
-│   └── quiz.js             # Serverless function → Anthropic API (Quiz Generator)
+│   ├── chat.js            # Serverless function → Gemini API (Study Buddy)
+│   └── quiz.js             # Serverless function → Gemini API (Quiz Generator)
 ├── package.json
 ├── .env.example
 └── .gitignore
@@ -163,7 +164,7 @@ padhaipal/
 
 ## Notes on privacy & security
 
-- The Anthropic API key lives only in the hosting provider's environment variables — it is never
+- The Gemini API key lives only in the hosting provider's environment variables — it is never
   committed to the repo and never sent to the browser.
 - The Study Tracker stores data only in the user's own browser (`localStorage`); nothing is sent
   to any server.

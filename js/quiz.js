@@ -11,12 +11,12 @@ genBtn.addEventListener('click', async ()=>{
   const count = document.getElementById('count').value;
 
   if(!topic){
-    genStatus.textContent = 'Pehle koi topic likho.';
+    genStatus.textContent = 'Please enter a topic first.';
     return;
   }
 
   genBtn.disabled = true;
-  genStatus.textContent = 'Quiz ban raha hai, ek second...';
+  genStatus.textContent = 'Generating your quiz...';
   quizArea.innerHTML = '';
   answers = {};
 
@@ -37,7 +37,7 @@ genBtn.addEventListener('click', async ()=>{
     renderQuiz(currentQuiz, topic);
     genStatus.textContent = '';
   }catch(e){
-    genStatus.textContent = 'Masla: ' + e.message;
+    genStatus.textContent = 'Error: ' + e.message;
   }finally{
     genBtn.disabled = false;
   }

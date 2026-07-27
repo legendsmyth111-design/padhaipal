@@ -3,11 +3,12 @@
 Yeh guide tumhein exactly wohi steps deta hai jo assignment maang raha hai: public GitHub repo +
 live public URL. In sab commands ko apne computer ke terminal mein chalao (is folder ke andar).
 
-## Step 1 — Anthropic API key lo (agar nahi hai)
+## Step 1 — Gemini API key lo (agar nahi hai)
 
-1. https://console.anthropic.com par jaao, account banao.
-2. **API Keys** section mein jaao, **Create Key** dabao.
-3. Key copy karlo (sirf ek dafa dikhti hai) — yeh baad mein Vercel mein daalni hai.
+1. https://aistudio.google.com/apikey par jaao, apne Google account se sign in karo (**free hai,
+   credit card nahi chahiye**).
+2. **"Create API key"** dabao.
+3. Key copy karlo (starts with `AIza...`) — yeh baad mein Vercel mein daalni hai.
 
 ## Step 2 — GitHub par public repo banao
 
@@ -42,8 +43,8 @@ tabhi theek hai.
 2. **Add New → Project** dabao, apni `padhaipal` repo select karo.
 3. Framework preset: **Other** (ya "None") — koi build command nahi chahiye.
 4. **Environment Variables** section mein yeh add karo:
-   - `ANTHROPIC_API_KEY` = `<apni copied key yahan paste karo>`
-   - `AI_MODEL` = `claude-haiku-4-5-20251001` *(optional — agar na do to yeh default use hoga)*
+   - `GEMINI_API_KEY` = `<apni copied key yahan paste karo>`
+   - `AI_MODEL` = `gemini-2.5-flash` *(optional — agar na do to yeh default use hoga)*
 5. **Deploy** dabao. 1-2 minute mein live URL mil jayega (e.g. `https://padhaipal.vercel.app`).
 
 **Option B — Terminal se:**
@@ -53,7 +54,7 @@ vercel login
 vercel --prod
 ```
 Deploy hone ke baad Vercel dashboard mein jaake **Settings → Environment Variables** mein
-`ANTHROPIC_API_KEY` add karo, phir dobara `vercel --prod` chalao taake variable apply ho jaye.
+`GEMINI_API_KEY` add karo, phir dobara `vercel --prod` chalao taake variable apply ho jaye.
 
 ## Step 5 — Test karo
 
@@ -64,7 +65,7 @@ Deploy hone ke baad Vercel dashboard mein jaake **Settings → Environment Varia
 5. **Study Tracker** par ek session log karo — table mein show hona chahiye.
 
 Agar AI Study Buddy ya Quiz Generator error de rahe hain, sabse pehle check karo ke
-`ANTHROPIC_API_KEY` Vercel ke environment variables mein sahi se set hai.
+`GEMINI_API_KEY` Vercel ke environment variables mein sahi se set hai.
 
 ## Step 6 — Screenshots aur README complete karo
 

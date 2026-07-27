@@ -14,40 +14,44 @@
     <a href="index.html" class="brand"><span class="dot"></span>PadhaiPal</a>
     <button class="navtoggle" id="navToggle" aria-label="Menu">☰</button>
     <ul class="navlinks" id="navLinks">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="assistant.html">AI Study Buddy</a></li>
-      <li><a href="quiz.html" class="active">Quiz Generator</a></li>
-      <li><a href="tracker.html">Study Tracker</a></li>
-      <li><a href="about.html">About</a></li>
+      <li><a href="index.html" data-ur="Home">Home</a></li>
+      <li><a href="assistant.html" data-ur="AI Study Buddy">AI Study Buddy</a></li>
+      <li><a href="quiz.html" class="active" data-ur="Quiz Generator">Quiz Generator</a></li>
+      <li><a href="tracker.html" data-ur="Study Tracker">Study Tracker</a></li>
+      <li><a href="about.html" data-ur="About">About</a></li>
+      <li class="lang-toggle">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ur">Roman UR</button>
+      </li>
     </ul>
   </div>
 </nav>
 
 <section style="padding-top:36px;">
   <div class="wrap">
-    <span class="eyebrow">AI feature #2</span>
-    <h1 style="font-size:2rem;">AI Quiz Generator</h1>
-    <p class="muted" style="max-width:600px;">
-      Koi bhi topic likho, difficulty aur sawalon ki tadaad choose karo — AI turant ek MCQ quiz
-      bana dega. Attempt karke apna score check karo.
+    <span class="eyebrow" data-ur="AI feature #2">AI feature #2</span>
+    <h1 style="font-size:2rem;" data-ur="AI Quiz Generator">AI Quiz Generator</h1>
+    <p class="muted" style="max-width:600px;" data-ur="Koi bhi topic likho, difficulty aur sawalon ki tadaad choose karo — AI turant ek MCQ quiz bana dega. Attempt karke apna score check karo.">
+      Type in any topic, pick a difficulty and number of questions — the AI instantly builds an
+      MCQ quiz. Take it and check your score right away.
     </p>
 
     <div class="card" style="margin-top:20px;">
       <div class="quiz-setup">
         <div class="field">
-          <label for="topic">Topic</label>
-          <input type="text" id="topic" placeholder="e.g. Cell Biology, Pakistan Movement, Algebra">
+          <label for="topic" data-ur="Topic">Topic</label>
+          <input type="text" id="topic" placeholder="e.g. Cell Biology, Pakistan Movement, Algebra" data-ur-placeholder="misaal ke tor par: Cell Biology, Pakistan Movement, Algebra">
         </div>
         <div class="field" style="max-width:160px;">
-          <label for="difficulty">Difficulty</label>
+          <label for="difficulty" data-ur="Difficulty">Difficulty</label>
           <select id="difficulty">
-            <option>Easy</option>
-            <option selected>Medium</option>
-            <option>Hard</option>
+            <option data-ur="Easy">Easy</option>
+            <option selected data-ur="Medium">Medium</option>
+            <option data-ur="Hard">Hard</option>
           </select>
         </div>
         <div class="field" style="max-width:140px;">
-          <label for="count">Questions</label>
+          <label for="count" data-ur="Questions">Questions</label>
           <select id="count">
             <option>3</option>
             <option selected>5</option>
@@ -55,7 +59,7 @@
             <option>10</option>
           </select>
         </div>
-        <button class="btn btn-primary" id="genBtn" style="height:44px;">Generate quiz</button>
+        <button class="btn btn-primary" id="genBtn" style="height:44px;" data-ur="Quiz banao">Generate quiz</button>
       </div>
       <p id="genStatus" class="muted" style="margin-top:12px;font-size:.88rem;"></p>
     </div>
@@ -67,10 +71,11 @@
 <footer>
   <div class="wrap">
     <div>© 2026 PadhaiPal</div>
-    <div class="foot-small"><a href="about.html">See the system prompt behind this feature →</a></div>
+    <div class="foot-small" data-ur="<a href='about.html'>Is feature ke peeche wala system prompt dekho →</a>"><a href="about.html">See the system prompt behind this feature →</a></div>
   </div>
 </footer>
 
+<script src="js/i18n.js"></script>
 <script src="js/quiz.js"></script>
 <script>
 document.getElementById('navToggle').addEventListener('click',()=>{

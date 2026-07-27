@@ -20,7 +20,7 @@ async function sendMessage(text){
   chatInput.value = '';
   sendBtn.disabled = true;
 
-  const thinking = addMsg('PadhaiPal soch raha hai...', 'bot thinking');
+  const thinking = addMsg('PadhaiPal is thinking...', 'bot thinking');
 
   try{
     const res = await fetch('/api/chat', {
@@ -40,7 +40,7 @@ async function sendMessage(text){
     history.push({ role: 'assistant', content: data.reply });
   }catch(e){
     thinking.remove();
-    addMsg('Maazrat, kuch masla ho gaya: ' + e.message + '\n\n(Agar tum developer ho: check karo ke ANTHROPIC_API_KEY environment variable set hai.)', 'bot');
+    addMsg('Sorry, something went wrong: ' + e.message + '\n\n(If you are the developer: check that GEMINI_API_KEY is set in your environment variables.)', 'bot');
   }finally{
     sendBtn.disabled = false;
   }
