@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Study Buddy — PadhaiPal</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="brand"><span class="dot"></span>PadhaiPal</a>
+    <button class="navtoggle" id="navToggle" aria-label="Menu">☰</button>
+    <ul class="navlinks" id="navLinks">
+      <li><a href="index.html" data-ur="Home">Home</a></li>
+      <li><a href="assistant.html" class="active" data-ur="AI Study Buddy">AI Study Buddy</a></li>
+      <li><a href="quiz.html" data-ur="Quiz Generator">Quiz Generator</a></li>
+      <li><a href="tracker.html" data-ur="Study Tracker">Study Tracker</a></li>
+      <li><a href="about.html" data-ur="About">About</a></li>
+      <li class="lang-toggle">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ur">Roman UR</button>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<section style="padding-top:36px;">
+  <div class="wrap">
+    <span class="eyebrow" data-ur="AI feature #1">AI feature #1</span>
+    <h1 style="font-size:2rem;" data-ur="AI Study Buddy">AI Study Buddy</h1>
+    <p class="muted" style="max-width:600px;" data-ur="Koi bhi concept, subject, ya assignment ka sawal poochho. Jawab step-by-step aur simple lafzon mein milega — Roman Urdu ya English, jo bhi tum use karo.">
+      Ask about any concept, subject, or assignment question. You'll get a clear, step-by-step
+      answer — in plain English or Roman Urdu, whichever you write in.
+    </p>
+
+    <div class="chat-shell" style="margin-top:20px;">
+      <div class="chat-log" id="chatLog">
+        <div class="msg bot" data-ur="Assalam-o-Alaikum! 👋 Main tumhara PadhaiPal Study Buddy hoon. Koi bhi topic poochho — Physics, Math, English grammar, Pak Studies, kuch bhi. Kis subject se shuru karein?">Hi! 👋 I'm your PadhaiPal Study Buddy. Ask me about any topic — Physics, Math, English grammar, Pakistan Studies, anything. What subject should we start with?</div>
+      </div>
+      <div class="chat-input">
+        <textarea id="chatInput" placeholder="Type your question here... (e.g. What is osmosis?)" data-ur-placeholder="Apna sawal yahan likho... (e.g. Osmosis kya hota hai?)" rows="1"></textarea>
+        <button class="btn btn-primary" id="sendBtn" data-ur="Bhejo">Send</button>
+      </div>
+    </div>
+
+    <div class="chips">
+      <button class="chip" data-q="Explain Newton's three laws with a simple example" data-q-en="Explain Newton's three laws with a simple example" data-q-ur="Newton ke teen laws simple example ke saath samjhao" data-ur="Newton's laws">Newton's laws</button>
+      <button class="chip" data-q="What's the structure of a good essay?" data-q-en="What's the structure of a good essay?" data-q-ur="Essay likhne ka structure kya hota hai?" data-ur="Essay structure">Essay structure</button>
+      <button class="chip" data-q="How does photosynthesis work?" data-q-en="How does photosynthesis work?" data-q-ur="Photosynthesis kaise kaam karta hai?" data-ur="Photosynthesis">Photosynthesis</button>
+      <button class="chip" data-q="How do I write a CV as a fresh graduate?" data-q-en="How do I write a CV as a fresh graduate?" data-q-ur="Mera CV kaise banau, ek fresh graduate ke liye?" data-ur="CV tips">CV tips</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 PadhaiPal</div>
+    <div class="foot-small" data-ur="<a href='about.html'>Is feature ke peeche wala system prompt dekho →</a>"><a href="about.html">See the system prompt behind this feature →</a></div>
+  </div>
+</footer>
+
+<script src="js/i18n.js"></script>
+<script src="js/assistant.js"></script>
+<script>
+document.getElementById('navToggle').addEventListener('click',()=>{
+  document.getElementById('navLinks').classList.toggle('open');
+});
+</script>
+</body>
+</html>

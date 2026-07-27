@@ -1,0 +1,9 @@
+{
+  "name": "padhaipal",
+  "version": "1.0.0",
+  "private": true,
+  "description": "PadhaiPal — a free, no-login AI study companion for Pakistani college students.",
+  "engines": {
+    "node": ">=18"
+  }
+}

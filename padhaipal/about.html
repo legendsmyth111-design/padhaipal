@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — PadhaiPal</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="brand"><span class="dot"></span>PadhaiPal</a>
+    <button class="navtoggle" id="navToggle" aria-label="Menu">☰</button>
+    <ul class="navlinks" id="navLinks">
+      <li><a href="index.html" data-ur="Home">Home</a></li>
+      <li><a href="assistant.html" data-ur="AI Study Buddy">AI Study Buddy</a></li>
+      <li><a href="quiz.html" data-ur="Quiz Generator">Quiz Generator</a></li>
+      <li><a href="tracker.html" data-ur="Study Tracker">Study Tracker</a></li>
+      <li><a href="about.html" class="active" data-ur="About">About</a></li>
+      <li class="lang-toggle">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ur">Roman UR</button>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<section style="padding-top:36px;">
+  <div class="wrap">
+    <span class="eyebrow" data-ur="Project ke baray mein">The project</span>
+    <h1 style="font-size:2rem;" data-ur="PadhaiPal ke baray mein">About PadhaiPal</h1>
+    <p class="muted" style="max-width:680px;" data-ur="PadhaiPal ek final-project web app hai jo un students ke liye banayi gayi hai jo chhotay ya rural colleges mein parhtay hain — jahan affordable private tuition milna mushkil hota hai. Isay koi account ya login nahi chahiye: link kholo aur foran use karna shuru karo.">
+      PadhaiPal is a final-project web app built to give students at small and rural colleges —
+      places where affordable private tuition is hard to find — a free, always-available study
+      companion. It needs no account and no login: open the link and start using it immediately.
+    </p>
+
+    <div class="grid grid-2" style="margin-top:30px;">
+      <div class="card">
+        <h3 data-ur="🎯 Masla">🎯 The problem</h3>
+        <p class="muted" data-ur="Bade shehron se bahar students ke paas aksar paid tutors ya 24/7 academic help ka access nahi hota. Textbooks aur lecture notes sirf itna hi kaam aatay hain — jab raat ko 11 baje koi concept samajh na aaye to musibat ho jati hai.">Students outside major cities often can't access paid tutors or 24/7 academic
+        help. Textbooks and lecture notes only go so far when a concept doesn't click at 11pm the
+        night before an exam.</p>
+      </div>
+      <div class="card">
+        <h3 data-ur="💡 Hal">💡 The solution</h3>
+        <p class="muted" data-ur="Ek AI study companion jo student ki apni zaban (Roman Urdu/English mix) mein concepts samjhata hai, on-demand practice quizzes banata hai, aur consistent study habits build karne mein madad karta hai.">An AI study companion that explains concepts in a student's own mixed
+        Roman-Urdu/English register, generates practice quizzes on demand, and helps them track
+        consistent study habits over time.</p>
+      </div>
+    </div>
+
+    <h2 style="margin-top:44px;" data-ur="AI feature — system prompts">The AI feature — system prompts</h2>
+    <p class="muted" style="max-width:680px;" data-ur="Dono AI features Google Gemini API se power ho rahe hain, serverless backend functions ke zariye call kiye jate hain taake API key kabhi browser tak na pohanchay. Neeche har feature ke exact instructions diye gaye hain.">Both AI features are powered by the Google Gemini
+    API, called from serverless backend functions so the API key never reaches the browser. Below
+    are the exact instructions written for each feature.</p>
+
+    <div class="notebook" style="margin-top:18px;">
+      <span class="badge">Study Buddy — system prompt</span>
+      <p style="margin-top:12px;font-family:var(--mono);font-size:.85rem;white-space:pre-wrap;">You are PadhaiPal Study Buddy, an AI tutor for college students in Pakistan, many of whom study at small-city or rural colleges with limited access to private tutoring.
+
+Rules:
+- Match the student's language: if they write in Roman Urdu/English mix, reply the same way; if they write in plain English, reply in plain English.
+- Explain concepts simply, step by step, using everyday examples a Pakistani student would relate to.
+- Keep answers focused and not too long — a student reading on a phone should be able to follow it in one go.
+- If a question is a factual homework question, still explain the reasoning, don't just give the final answer.
+- Be encouraging and patient. Never make the student feel bad for not knowing something.
+- If asked something unrelated to study/education/career, gently steer back to how you can help academically.
+- Do not do anything unsafe or generate content unrelated to a respectful, academic tutoring context.</p>
+    </div>
+
+    <div class="notebook" style="margin-top:22px;">
+      <span class="badge">Quiz Generator — system prompt</span>
+      <p style="margin-top:12px;font-family:var(--mono);font-size:.85rem;white-space:pre-wrap;">You are PadhaiPal's quiz generator. Given a topic, a difficulty level, and a number of
+questions, generate a multiple-choice quiz to help a college student practice.
+
+Rules:
+- Output ONLY valid JSON, no markdown fences, no extra commentary, matching exactly this shape:
+  { "questions": [ { "question": string, "options": [string, string, string, string],
+    "correctIndex": number (0-3), "explanation": string } ] }
+- Generate exactly the requested number of questions.
+- Match the requested difficulty: Easy = definitions/basic recall, Medium = applied understanding,
+  Hard = multi-step reasoning or analysis.
+- Questions must be accurate, unambiguous, and have exactly one correct option.
+- Write a short one-line explanation for why the correct answer is correct.
+- Keep language clear and exam-relevant to a Pakistani college curriculum where applicable.</p>
+    </div>
+
+    <h2 style="margin-top:44px;" data-ur="Features">Features</h2>
+    <ul class="muted" style="max-width:680px;line-height:1.9;">
+      <li data-ur="💬 AI Study Buddy — free-form Q&amp;A chat, bilingual, kisi bhi subject ko samjhata hai">💬 AI Study Buddy — free-form Q&amp;A chat, bilingual, explains any subject</li>
+      <li data-ur="📝 AI Quiz Generator — kisi bhi topic se custom MCQ quiz banata hai, foran auto-graded">📝 AI Quiz Generator — generates custom MCQ quizzes from any topic, auto-graded instantly</li>
+      <li data-ur="📊 Study Tracker — study sessions log karo, total hours, streaks aur subject breakdown dekho">📊 Study Tracker — log study sessions, see total hours, streaks and subject breakdown</li>
+      <li data-ur="📱 Fully responsive, mobile browsers par bhi chalta hai">📱 Fully responsive, works on mobile browsers</li>
+      <li data-ur="🔓 Koi sign-up nahi, koi login nahi, kahin bhi account nahi">🔓 No sign-up, no login, no accounts anywhere in the app</li>
+    </ul>
+
+    <h2 style="margin-top:44px;" data-ur="Kis se bana">Built with</h2>
+    <p class="muted" style="max-width:680px;" data-ur="Frontend ke liye vanilla HTML, CSS aur JavaScript (koi framework nahi, koi build step nahi) · AI calls ke backend ke liye Vercel Serverless Functions · Dono AI features ke liye Google Gemini API · Study Tracker ke liye browser localStorage · Vercel par hosted aur deployed · Code GitHub par likha aur version-control kiya gaya.">
+      Vanilla HTML, CSS &amp; JavaScript for the frontend (no framework, no build step) · Vercel
+      Serverless Functions for the backend AI calls · Google Gemini API for both AI features ·
+      Browser localStorage for the Study Tracker · Hosted and deployed on Vercel · Code written and
+      version-controlled on GitHub.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 PadhaiPal</div>
+    <div class="foot-small" data-ur="Ek final project — akele, shuru se aakhir tak banaya gaya.">A final project — built solo, end to end.</div>
+  </div>
+</footer>
+
+<script src="js/i18n.js"></script>
+<script>
+document.getElementById('navToggle').addEventListener('click',()=>{
+  document.getElementById('navLinks').classList.toggle('open');
+});
+</script>
+</body>
+</html>

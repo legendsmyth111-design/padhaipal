@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Tracker — PadhaiPal</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="brand"><span class="dot"></span>PadhaiPal</a>
+    <button class="navtoggle" id="navToggle" aria-label="Menu">☰</button>
+    <ul class="navlinks" id="navLinks">
+      <li><a href="index.html" data-ur="Home">Home</a></li>
+      <li><a href="assistant.html" data-ur="AI Study Buddy">AI Study Buddy</a></li>
+      <li><a href="quiz.html" data-ur="Quiz Generator">Quiz Generator</a></li>
+      <li><a href="tracker.html" class="active" data-ur="Study Tracker">Study Tracker</a></li>
+      <li><a href="about.html" data-ur="About">About</a></li>
+      <li class="lang-toggle">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ur">Roman UR</button>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<section style="padding-top:36px;">
+  <div class="wrap">
+    <span class="eyebrow" data-ur="Apni mehnat track karo">Track your effort</span>
+    <h1 style="font-size:2rem;" data-ur="Study Tracker">Study Tracker</h1>
+    <p class="muted" style="max-width:600px;" data-ur="Apne study sessions log karo. Sab data sirf tumhare browser mein (localStorage) save hota hai — koi account, koi server, koi login nahi.">
+      Log your study sessions. All your data is saved only in your own browser (localStorage) —
+      no account, no server, no login.
+    </p>
+
+    <div class="stat-row" style="margin-top:24px;">
+      <div class="stat"><div class="num" id="statTotal">0</div><div class="lbl" data-ur="Total ghantay">Total hours</div></div>
+      <div class="stat"><div class="num" id="statSessions">0</div><div class="lbl" data-ur="Sessions log huay">Sessions logged</div></div>
+      <div class="stat"><div class="num" id="statStreak">0</div><div class="lbl" data-ur="Din ki streak">Day streak</div></div>
+      <div class="stat"><div class="num" id="statSubjects">0</div><div class="lbl" data-ur="Subjects">Subjects</div></div>
+    </div>
+
+    <div class="card">
+      <form class="log-form" id="logForm">
+        <div class="field">
+          <label for="subject" data-ur="Subject">Subject</label>
+          <input type="text" id="subject" placeholder="e.g. Chemistry" data-ur-placeholder="misaal: Chemistry" required>
+        </div>
+        <div class="field" style="max-width:140px;">
+          <label for="minutes" data-ur="Minutes">Minutes</label>
+          <input type="number" id="minutes" min="1" max="600" placeholder="45" required>
+        </div>
+        <div class="field" style="max-width:170px;">
+          <label for="logdate" data-ur="Date">Date</label>
+          <input type="date" id="logdate" required>
+        </div>
+        <button type="submit" class="btn btn-green" style="height:44px;" data-ur="+ Session log karo">+ Log session</button>
+      </form>
+    </div>
+
+    <div style="margin-top:22px;">
+      <table class="sessions" id="sessionsTable">
+        <thead>
+          <tr><th data-ur="Date">Date</th><th data-ur="Subject">Subject</th><th data-ur="Duration">Duration</th><th></th></tr>
+        </thead>
+        <tbody id="sessionsBody"></tbody>
+      </table>
+      <div class="empty" id="emptyState" style="display:none;" data-ur="Abhi tak koi session log nahi hua. Upar form se apna pehla session add karo! 📚">
+        No sessions logged yet. Add your first one using the form above! 📚
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 PadhaiPal</div>
+    <div class="foot-small" data-ur="Tumhara data kabhi tumhare browser se bahir nahi jata">Your data never leaves your browser</div>
+  </div>
+</footer>
+
+<script src="js/i18n.js"></script>
+<script src="js/tracker.js"></script>
+<script>
+document.getElementById('navToggle').addEventListener('click',()=>{
+  document.getElementById('navLinks').classList.toggle('open');
+});
+</script>
+</body>
+</html>
