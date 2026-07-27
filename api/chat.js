@@ -1,5 +1,5 @@
 // /api/chat — Study Buddy chatbot backend
-// Runs as a Vercel Serverless Function. Keeps the Gemini API key on the
+// Runs as a Vercel Serverless Function. Keeps the Groq API key on the
 // server only — it is never exposed to the browser.
 
 const SYSTEM_PROMPT = `You are PadhaiPal Study Buddy, an AI tutor for college students in Pakistan, many of whom study at small-city or rural colleges with limited access to private tutoring.
@@ -13,7 +13,7 @@ Rules:
 - If asked something unrelated to study/education/career, gently steer back to how you can help academically.
 - Do not do anything unsafe or generate content unrelated to a respectful, academic tutoring context.`;
 
-const MODEL = process.env.AI_MODEL || 'gemini-2.5-flash';
+const MODEL = process.env.AI_MODEL || 'llama-3.3-70b-versatile';
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {
@@ -21,9 +21,9 @@ module.exports = async (req, res) => {
     return;
   }
 
-  const apiKey = process.env.GEMINI_API_KEY;
+  const apiKey = process.env.GROQ_API_KEY;
   if (!apiKey) {
-    res.status(500).json({ error: 'Server is missing GEMINI_API_KEY. Set it in your hosting environment variables.' });
+    res.status(500).json({ error: 'Server is missing GROQ_API_KEY. Set it in your hosting environment variables.' });
     return;
   }
 
@@ -34,24 +34,27 @@ module.exports = async (req, res) => {
       return;
     }
 
-    // Keep the payload small: last 12 turns is plenty for a study chat.
-    const trimmed = messages.slice(-12).map(m => ({
-      role: m.role === 'assistant' ? 'model' : 'user',
-      parts: [{ text: String(m.content || '').slice(0, 4000) }]
-    }));
+    // Convert chat history to OpenAI / Groq standard message format
+    const formattedMessages = [
+      { role: 'system', content: SYSTEM_PROMPT },
+      ...messages.slice(-12).map(m => ({
+        role: m.role === 'assistant' ? 'assistant' : 'user',
+        content: String(m.content || '').slice(0, 4000)
+      }))
+    ];
 
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`;
+    const url = 'https://api.groq.com/openai/v1/chat/completions';
 
     const response = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-goog-api-key': apiKey
+        'Authorization': `Bearer ${apiKey}`
       },
       body: JSON.stringify({
-        system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
-        contents: trimmed,
-        generationConfig: { maxOutputTokens: 700 }
+        model: MODEL,
+        messages: formattedMessages,
+        max_tokens: 700
       })
     });
 
@@ -62,10 +65,7 @@ module.exports = async (req, res) => {
       return;
     }
 
-    const reply = (data.candidates?.[0]?.content?.parts || [])
-      .map(p => p.text || '')
-      .join('\n')
-      .trim();
+    const reply = data.choices?.[0]?.message?.content?.trim();
 
     res.status(200).json({ reply: reply || "Sorry, I couldn't generate a reply. Try rephrasing your question." });
   } catch (err) {

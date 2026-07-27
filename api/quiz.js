@@ -1,5 +1,5 @@
 // /api/quiz — AI Quiz Generator backend
-// Runs as a Vercel Serverless Function. Keeps the Gemini API key on the
+// Runs as a Vercel Serverless Function. Keeps the Groq API key on the
 // server only — it is never exposed to the browser.
 
 const SYSTEM_PROMPT = `You are PadhaiPal's quiz generator. Given a topic, a difficulty level, and a number of
@@ -16,7 +16,7 @@ Rules:
 - Write a short one-line explanation for why the correct answer is correct.
 - Keep language clear and exam-relevant to a Pakistani college curriculum where applicable.`;
 
-const MODEL = process.env.AI_MODEL || 'gemini-2.5-flash';
+const MODEL = process.env.AI_MODEL || 'llama-3.3-70b-versatile';
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {
@@ -24,9 +24,9 @@ module.exports = async (req, res) => {
     return;
   }
 
-  const apiKey = process.env.GEMINI_API_KEY;
+  const apiKey = process.env.GROQ_API_KEY;
   if (!apiKey) {
-    res.status(500).json({ error: 'Server is missing GEMINI_API_KEY. Set it in your hosting environment variables.' });
+    res.status(500).json({ error: 'Server is missing GROQ_API_KEY. Set it in your hosting environment variables.' });
     return;
   }
 
@@ -41,18 +41,22 @@ module.exports = async (req, res) => {
 
     const userPrompt = `Topic: ${topic}\nDifficulty: ${safeDifficulty}\nNumber of questions: ${safeCount}`;
 
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`;
+    const url = 'https://api.groq.com/openai/v1/chat/completions';
 
     const response = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-goog-api-key': apiKey
+        'Authorization': `Bearer ${apiKey}`
       },
       body: JSON.stringify({
-        system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
-        contents: [{ role: 'user', parts: [{ text: userPrompt }] }],
-        generationConfig: { maxOutputTokens: 2000, responseMimeType: 'application/json' }
+        model: MODEL,
+        messages: [
+          { role: 'system', content: SYSTEM_PROMPT },
+          { role: 'user', content: userPrompt }
+        ],
+        response_format: { type: 'json_object' },
+        max_tokens: 2000
       })
     });
 
@@ -63,10 +67,7 @@ module.exports = async (req, res) => {
       return;
     }
 
-    const raw = (data.candidates?.[0]?.content?.parts || [])
-      .map(p => p.text || '')
-      .join('\n')
-      .trim();
+    const raw = data.choices?.[0]?.message?.content?.trim() || '';
 
     let parsed;
     try {
